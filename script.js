@@ -65,10 +65,12 @@ const timerFunction = () => {
 
 btn[0].addEventListener("click", () => {
   timerFunction();
+  heading.style.animation = "glow 3s linear infinite";
 });
 btn[1].addEventListener("click", () => {
+  heading.style.animation = "none";
   counterTimer.style.display = "none";
-  heading.innerText = "Start Again";
+  heading.innerText = "Please Reload";
   clearInterval(intervalID);
 });
 btn[2].addEventListener("click", () => {
