@@ -5,6 +5,8 @@ const minutesElement = document.querySelector(".minutes");
 const secondsElement = document.querySelector(".seconds");
 const heading = document.querySelector("h1");
 const counterTimer = document.querySelector(".counterTimer");
+const input = document.getElementById("start-time");
+const btn = document.querySelectorAll("button");
 
 const second = 1000,
   minute = 60 * second,
@@ -15,20 +17,25 @@ const second = 1000,
 const timerFunction = () => {
   let now = new Date();
   let dd = String(now.getDate()).padStart(2, "0"),
-    mm = String(now.getMonth()).padStart(2, "0"),
-    yyyy = now.getFullYear();
+    mm = String(now.getMonth() + 1).padStart(2, "0"),
+    yyyy = now.getFullYear(),
+    hourTime = String(now.getHours()).padStart(2, "0"),
+    minuteTime = String(now.getMinutes()).padStart(2, "0"),
+    secondsTime = String(now.getSeconds()).padStart(2, "0");
 
-  now = `${mm}/${dd}/${yyyy}`;
+  now = `${mm}/${dd}/${yyyy}/${hourTime}/${minuteTime}/${secondsTime}`;
 
-  const enteredDay = prompt("Enter Day").padStart(2, "0");
-  const enteredMonth = prompt("Enter Month").padStart(2, "0");
-  const enteredYear = prompt("Enter Year");
+  // const enteredDay = prompt("Enter Day").padStart(2, "0");
+  // const enteredMonth = prompt("Enter Month").padStart(2, "0");
+  // const enteredYear = prompt("Enter Year");
   // console.log(`${enteredMonth}/${enteredDay}/${enteredYear}`);
 
-  let targetDate = `${enteredMonth}/${enteredDay}/${enteredYear}`;
+  // let targetDate = `${enteredMonth}/${enteredDay}/${enteredYear}`;
   // if (targetDate < now) {
   //   targetDate = `${enteredMonth}/${enteredDay}/${enteredYear}`;
   // }
+
+  let targetDate = input.value;
 
   const intervalID = setInterval(() => {
     const timer = new Date(targetDate).getTime();
@@ -56,4 +63,14 @@ const timerFunction = () => {
   }, 0);
 };
 
-timerFunction();
+btn[0].addEventListener("click", () => {
+  timerFunction();
+});
+btn[1].addEventListener("click", () => {
+  counterTimer.style.display = "none";
+  heading.innerText = "Start Again";
+  clearInterval(intervalID);
+});
+btn[2].addEventListener("click", () => {
+  location.reload();
+});
