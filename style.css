@@ -41,6 +41,7 @@ button {
   color: black;
   font: bold 1rem cursive;
   background-color: crimson;
+  border: none;
 }
 
 button:hover {
@@ -56,13 +57,14 @@ h1 {
   padding: 10px;
   cursor: pointer;
 }
-h1:hover {
+/* h1:hover {
   box-shadow: 0px 0px 30px 8px crimson;
   border-bottom: 0.5px solid white;
-}
+} */
 
 .counterTimer {
   display: flex;
+  flex-wrap: wrap;
   cursor: pointer;
 }
 .counterTimer:hover {
