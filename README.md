@@ -1,2 +1,2 @@
-# JS-Projects
-Here is my JavaScript Projects..
+# JS-Projects 1
+Counter Timer
